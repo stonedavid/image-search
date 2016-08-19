@@ -1,10 +1,8 @@
-const mongo = require("mongodb").MongoClient();
 const express = require("express");
 const https = require("https");
-const HOME = "https://image-search-dxstone.c9users.io/"
+const HOME = "https://stonedavid-image-search.herokuapp.com/";
 
 var app = express();
-var key = 'U1VJSUp5aGUydTZ5RlowNkQzUHRtRUg3WmJ4Y3VOb2JpMVFyYlRFb0I2NDpTVUlJSnloZTJ1NnlGWjA2RDNQdG1FSDdaYnhjdU5vYmkxUXJiVEVvQjY0'
 var recent = [];
 
 var jsonFormatPath = "&$format=JSON";
@@ -49,7 +47,7 @@ app.get("/api/*",function(req,res) {
     
     var options = {
             headers : {
-                "Authorization": 'Basic ' + key
+                "Authorization": 'Basic ' + process.env.BING_KEY,
             },
             host: 'api.datamarket.azure.com',
             path: "/Data.ashx/Bing/Search/v1/Image?Query=",
